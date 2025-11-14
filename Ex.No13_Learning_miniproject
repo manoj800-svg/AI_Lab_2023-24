@@ -1,15 +1,48 @@
 # Ex.No: 10 Learning – Use Supervised Learning  
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE: 30/10/2025                                                                           
+### REGISTER NUMBER : 212223060153
 ### AIM: 
-To write a program to train the classifier for -----------------.
+To write a program to train the classifier for Iris Flower.
 ###  Algorithm:
-
+1.Load the Iris dataset and separate features (X) and labels (y).
+2.Split the data into training and testing sets (80:20).
+3.Normalize the feature values using StandardScaler.
+4.Train the Logistic Regression model using the training data.
+5.Predict the flower classes for the test data.
+6.Evaluate the model using accuracy and classification report.
 ### Program:
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
+
+# Load dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Scale
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Predict
+y_pred = model.predict(X_test)
+
+# Accuracy
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
 
 
 ### Output:
-
 
 ### Result:
 Thus the system was trained successfully and the prediction was carried out.
